@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] private float accelerationTime;
 	[SerializeField] private float slowingTime;
 	[SerializeField] private float maxJumpTime;
+	[SerializeField] private float jumpSpeed;
+	[SerializeField] private float gravityScale;
 	[SerializeField] private float groundCheckRadius;
 	[SerializeField] private Transform groundCheck;
 	[SerializeField] private Rigidbody2D rb;
@@ -48,15 +50,15 @@ public class PlayerController : MonoBehaviour
 			rb.AddForce(new Vector2(-rb.mass * (rb.velocity.x / slowingTime), 0));
 		}
 
-		if (Jump && CurrentJumpTime <= maxJumpTime - (10.0f / -Physics2D.gravity.y + maxJumpTime / 2.0f))
+		if (Jump && CurrentJumpTime <= maxJumpTime - (jumpSpeed / (-Physics2D.gravity.y * rb.gravityScale) + maxJumpTime / 2.0f))
 		{
 			rb.gravityScale = 0;
-			rb.velocity = new Vector2(rb.velocity.x, 10);
+			rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
 			CurrentJumpTime += Time.fixedDeltaTime;
 		}
 		else
 		{
-			rb.gravityScale = 1;
+			rb.gravityScale = gravityScale;
 		}
 	}
 }

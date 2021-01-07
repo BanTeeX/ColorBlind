@@ -3,33 +3,39 @@ using UnityEngine;
 
 public class ThemeChange : MonoBehaviour
 {
-    public SpriteRenderer background;
-    public List<Sprite> backgroundSprites;
-    public Mode mode;
+	public bool Blocked { get; set; }
 
-    public GameObject[] Black { get; set; }
-    public GameObject[] White { get; set; }
+    [SerializeField] private SpriteRenderer background;
+    [SerializeField] private List<Sprite> backgroundSprites;
+    [SerializeField] private Mode mode;
+
+    private GameObject[] Black { get; set; }
+    private GameObject[] White { get; set; }
 
     public enum Mode
 	{
         Dark,
-        Light,
-        Neutral
+        Light
 	}
 
 	private void Start()
     {
         Black = FindGameObjectsInLayer(LayerMask.NameToLayer("Black"));
         White = FindGameObjectsInLayer(LayerMask.NameToLayer("White"));
-		ChangeTheme(Mode.Dark);
+		ChangeTheme(mode);
     }
 
 	private void Update()
 	{
-		if (Input.GetKeyDown(KeyCode.Space))
+		if (Input.GetKeyDown(KeyCode.Space) && !Blocked)
 		{
 			ChangeTheme(mode == Mode.Dark ? Mode.Light : Mode.Dark);
 		}
+	}
+
+	private void FixedUpdate()
+	{
+		Blocked = false;
 	}
 
 	private void ChangeTheme(Mode mode)
@@ -38,11 +44,11 @@ public class ThemeChange : MonoBehaviour
 		background.sprite = backgroundSprites[(int)mode];
 		foreach (GameObject gameObject in mode == Mode.Dark ? White : Black)
 		{
-			gameObject.SetActive(true);
+			gameObject.GetComponent<Collider2D>().isTrigger = false;
 		}
 		foreach (GameObject gameObject in mode == Mode.Dark ? Black : White)
 		{
-			gameObject.SetActive(false);
+			gameObject.GetComponent<Collider2D>().isTrigger = true;
 		}
 	}
 
