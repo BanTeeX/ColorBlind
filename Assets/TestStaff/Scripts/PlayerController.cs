@@ -12,8 +12,8 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] private Rigidbody2D rb;
 
 	private float Direction { get; set; }
+	private float CurrentJumpTime { get; set; }
 	private bool Jump { get; set; }
-	private bool JumpFirstFrame { get; set; } = true;
 	private bool IsGrounded { get; set; }
 
 	private void Update()
@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
 
 		if (IsGrounded)
 		{
-			JumpFirstFrame = true;
+			CurrentJumpTime = 0;
 		}
 
 		rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x, -maxSpeed, maxSpeed), rb.velocity.y);
@@ -48,17 +48,15 @@ public class PlayerController : MonoBehaviour
 			rb.AddForce(new Vector2(-rb.mass * (rb.velocity.x / slowingTime), 0));
 		}
 
-		if (Jump)
+		if (Jump && CurrentJumpTime <= maxJumpTime - (10.0f / -Physics2D.gravity.y + maxJumpTime / 2.0f))
 		{
-			if (JumpFirstFrame)
-			{
-				rb.AddForce(new Vector2(0, 500));
-				JumpFirstFrame = false;
-			}
-			else
-			{
-				rb.AddForce(new Vector2(0, -Physics2D.gravity.y * rb.mass * rb.gravityScale));
-			}
+			rb.gravityScale = 0;
+			rb.velocity = new Vector2(rb.velocity.x, 10);
+			CurrentJumpTime += Time.fixedDeltaTime;
+		}
+		else
+		{
+			rb.gravityScale = 1;
 		}
 	}
 }
