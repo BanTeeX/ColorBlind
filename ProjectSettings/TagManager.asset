@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Black
+  - White
   layers:
   - Default
   - TransparentFX
@@ -13,9 +15,9 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
+  - Black
+  - White
+  - Neutral
   - 
   - 
   - 
@@ -38,6 +40,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 2037576931
+    locked: 0
+  - name: Blocks
+    uniqueID: 1092548621
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
