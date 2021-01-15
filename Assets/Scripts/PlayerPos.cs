@@ -19,7 +19,23 @@ public class PlayerPos : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            Destroy(gameObject);
+           
+        }
+    }
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Platform"))
+        {
+            transform.parent = collision.transform;
+            Debug.Log("We are on a moving platform");
+        }
+        if(!collision.CompareTag("Platform"))
+        {
+            transform.parent = null;
+            Debug.Log("We are not on a moving platform");
         }
     }
 }
