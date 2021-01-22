@@ -6,8 +6,6 @@ TagManager:
   tags:
   - Black
   - White
-  - GM
-  - Platform
   layers:
   - Default
   - TransparentFX
