@@ -8,8 +8,8 @@ public class PlayerPos : MonoBehaviour
 {
     
     private GameMaster gm;
-    [SerializeField] GameObject player;
-    [SerializeField] GameObject master;
+    [SerializeField] GameObject player = null;
+    [SerializeField] GameObject master = null;
     // Start is called before the first frame update
     void Start()
     {
