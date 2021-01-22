@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public class PlayerPos : MonoBehaviour
 {
-
+    
     private GameMaster gm;
+    [SerializeField] GameObject player;
+    [SerializeField] GameObject master;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,16 +17,17 @@ public class PlayerPos : MonoBehaviour
         transform.position = gm.lastCheckPointPos;
     }
 
+
     // Służy do specjalnego zabijania się, żeby testować/ Można wyjebać
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
+            
+            Instantiate(player, new Vector2(master.transform.position.x, master.transform.position.y), Quaternion.identity);
             Destroy(gameObject);
-           
         }
     }
-
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
