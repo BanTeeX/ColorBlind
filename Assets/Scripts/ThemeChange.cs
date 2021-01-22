@@ -3,11 +3,11 @@ using UnityEngine;
 
 public class ThemeChange : MonoBehaviour
 {
-	public bool Blocked { get; set; }
-
-    [SerializeField] private SpriteRenderer background;
-    [SerializeField] private List<Sprite> backgroundSprites;
+    [SerializeField] private SpriteRenderer background = null;
+    [SerializeField] private List<Sprite> backgroundSprites = null;
     [SerializeField] private Mode mode;
+
+	public bool Blocked { get; set; }
 
     private GameObject[] Black { get; set; }
     private GameObject[] White { get; set; }
@@ -42,13 +42,13 @@ public class ThemeChange : MonoBehaviour
 	{
 		this.mode = mode;
 		background.sprite = backgroundSprites[(int)mode];
-		foreach (GameObject gameObject in mode == Mode.Dark ? White : Black)
-		{
-			gameObject.GetComponent<Collider2D>().isTrigger = false;
-		}
 		foreach (GameObject gameObject in mode == Mode.Dark ? Black : White)
 		{
-			gameObject.GetComponent<Collider2D>().isTrigger = true;
+			gameObject.GetComponent<Block>().ChangeActive(true);
+		}
+		foreach (GameObject gameObject in mode == Mode.Dark ? White : Black)
+		{
+			gameObject.GetComponent<Block>().ChangeActive(false);
 		}
 	}
 

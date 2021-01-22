@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlatformPathing : MonoBehaviour {
 
     
-    [SerializeField] List<Transform> waypoints;
-    [SerializeField] float moveSpeead;
+    [SerializeField] List<Transform> waypoints = null;
+    [SerializeField] float moveSpeead = 0;
     int waypointIndex = 0;
 
 	// Use this for initialization

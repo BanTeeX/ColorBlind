@@ -1,22 +1,28 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
 {
-	[SerializeField] private float maxSpeed;
-	[SerializeField] private float speedToleration;
-	[SerializeField] private float accelerationTime;
-	[SerializeField] private float slowingTime;
-	[SerializeField] private float maxJumpTime;
-	[SerializeField] private float jumpSpeed;
-	[SerializeField] private float gravityScale;
-	[SerializeField] private float groundCheckRadius;
-	[SerializeField] private Transform groundCheck;
-	[SerializeField] private Rigidbody2D rb;
+	[SerializeField] private float maxSpeed = 0;
+	[SerializeField] private float speedToleration = 0;
+	[SerializeField] private float accelerationTime = 0;
+	[SerializeField] private float slowingTime = 0;
+	[SerializeField] private float maxJumpTime = 0;
+	[SerializeField] private float jumpSpeed = 0;
+	[SerializeField] private float gravityScale = 0;
+	[SerializeField] private float groundCheckRadius = 0;
+	[SerializeField] private Transform groundCheck = null;
 
+	private Rigidbody2D Rb { get; set; }
 	private float Direction { get; set; }
 	private float CurrentJumpTime { get; set; }
 	private bool Jump { get; set; }
 	private bool IsGrounded { get; set; }
+
+	private void Start()
+	{
+		Rb = GetComponent<Rigidbody2D>();
+	}
 
 	private void Update()
     {
@@ -29,36 +35,36 @@ public class PlayerController : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-		IsGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, LayerMask.GetMask("Black", "White"));
+		IsGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, LayerMask.GetMask("Black", "White", "Neutral"));
 
 		if (IsGrounded)
 		{
 			CurrentJumpTime = 0;
 		}
 
-		rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x, -maxSpeed, maxSpeed), rb.velocity.y);
-		if (Mathf.Abs(rb.velocity.x) < speedToleration)
+		Rb.velocity = new Vector2(Mathf.Clamp(Rb.velocity.x, -maxSpeed, maxSpeed), Rb.velocity.y);
+		if (Mathf.Abs(Rb.velocity.x) < speedToleration)
 		{
-			rb.velocity = new Vector2(0, rb.velocity.y);
+			Rb.velocity = new Vector2(0, Rb.velocity.y);
 		}
 		if (Direction != 0)
 		{
-			rb.AddForce(new Vector2(rb.mass * (maxSpeed / accelerationTime), 0) * Direction);
+			Rb.AddForce(new Vector2(Rb.mass * (maxSpeed / accelerationTime), 0) * Direction);
 		}
 		else
 		{
-			rb.AddForce(new Vector2(-rb.mass * (rb.velocity.x / slowingTime), 0));
+			Rb.AddForce(new Vector2(-Rb.mass * (Rb.velocity.x / slowingTime), 0));
 		}
 
-		if (Jump && CurrentJumpTime <= maxJumpTime - (jumpSpeed / (-Physics2D.gravity.y * rb.gravityScale) + maxJumpTime / 2.0f))
+		if (Jump && CurrentJumpTime <= maxJumpTime - (jumpSpeed / (-Physics2D.gravity.y * Rb.gravityScale) + maxJumpTime / 2.0f))
 		{
-			rb.gravityScale = 0;
-			rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
+			Rb.gravityScale = 0;
+			Rb.velocity = new Vector2(Rb.velocity.x, jumpSpeed);
 			CurrentJumpTime += Time.fixedDeltaTime;
 		}
 		else
 		{
-			rb.gravityScale = gravityScale;
+			Rb.gravityScale = gravityScale;
 		}
 	}
 }
