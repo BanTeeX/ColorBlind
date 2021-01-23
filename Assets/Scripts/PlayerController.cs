@@ -25,13 +25,13 @@ public class PlayerController : MonoBehaviour
 	}
 
 	private void Update()
-    {
-        Direction = Input.GetAxisRaw("Horizontal");
+	{
+		Direction = Input.GetAxisRaw("Horizontal");
 		if (IsGrounded || Jump)
 		{
 			Jump = Input.GetButton("Jump");
 		}
-    }
+	}
 
 	private void FixedUpdate()
 	{

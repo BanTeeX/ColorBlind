@@ -3,27 +3,27 @@ using UnityEngine;
 
 public class ThemeChange : MonoBehaviour
 {
-    [SerializeField] private SpriteRenderer background = null;
-    [SerializeField] private List<Sprite> backgroundSprites = null;
-    [SerializeField] private Mode mode;
+	[SerializeField] private SpriteRenderer background = null;
+	[SerializeField] private List<Sprite> backgroundSprites = null;
+	[SerializeField] private Mode mode;
 
 	public bool Blocked { get; set; }
 
-    private GameObject[] Black { get; set; }
-    private GameObject[] White { get; set; }
+	private GameObject[] Black { get; set; }
+	private GameObject[] White { get; set; }
 
-    public enum Mode
+	public enum Mode
 	{
-        Dark,
-        Light
+		Dark,
+		Light
 	}
 
 	private void Start()
-    {
-        Black = FindGameObjectsInLayer(LayerMask.NameToLayer("Black"));
-        White = FindGameObjectsInLayer(LayerMask.NameToLayer("White"));
+	{
+		Black = FindGameObjectsInLayer(LayerMask.NameToLayer("Black"));
+		White = FindGameObjectsInLayer(LayerMask.NameToLayer("White"));
 		ChangeTheme(mode);
-    }
+	}
 
 	private void Update()
 	{
@@ -54,19 +54,19 @@ public class ThemeChange : MonoBehaviour
 
 	private GameObject[] FindGameObjectsInLayer(int layer)
 	{
-        GameObject[] objects = (GameObject[])FindObjectsOfType(typeof(GameObject));
-        List<GameObject> gameObjects = new List<GameObject>();
+		GameObject[] objects = (GameObject[])FindObjectsOfType(typeof(GameObject));
+		List<GameObject> gameObjects = new List<GameObject>();
 		foreach (GameObject gameObject in objects)
 		{
 			if (gameObject.layer == layer)
 			{
-                gameObjects.Add(gameObject);
+				gameObjects.Add(gameObject);
 			}
 		}
 		if (gameObjects.Count == 0)
 		{
-            return null;
+			return null;
 		}
-        return gameObjects.ToArray();
-    }
+		return gameObjects.ToArray();
+	}
 }
