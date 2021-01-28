@@ -1,22 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
-
+﻿using UnityEngine;
 
 public class PlayerPos : MonoBehaviour
 {
-    
-    private GameMaster gm;
-    [SerializeField] GameObject player = null;
-    [SerializeField] GameObject master = null;
-    // Start is called before the first frame update
-    void Start()
-    {
-        gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameMaster>();
-        transform.position = gm.lastCheckPointPos;
-    }
+	[SerializeField] private GameObject player = null;
+	[SerializeField] private GameObject master = null;
+	
+	private GameMaster gm;
 
+	private void Start()
+	{
+		gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameMaster>();
+		transform.position = gm.lastCheckPointPos;
+	}
 
     // Służy do specjalnego zabijania się, żeby testować/ Można wyjebać
     void Update()
