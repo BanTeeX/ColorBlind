@@ -1,11 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
-
+﻿using UnityEngine;
 
 public class PlayerPos : MonoBehaviour
 {
+<<<<<<< HEAD
     
     private GameMaster gm;
     [SerializeField] GameObject player = null;
@@ -16,7 +13,18 @@ public class PlayerPos : MonoBehaviour
         gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameMaster>();
         transform.position = gm.lastCheckPointPos;
     }
+=======
+	[SerializeField] private GameObject player = null;
+	[SerializeField] private GameObject master = null;
+	
+	private GameMaster gm;
+>>>>>>> main
 
+	private void Start()
+	{
+		gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameMaster>();
+		transform.position = gm.lastCheckPointPos;
+	}
 
     // Służy do specjalnego zabijania się, żeby testować/ Można wyjebać
     void Update()
