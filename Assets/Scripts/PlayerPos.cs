@@ -13,7 +13,7 @@ public class PlayerPos : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameMaster>();
+        gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameMaster>();
         transform.position = gm.lastCheckPointPos;
     }
 
