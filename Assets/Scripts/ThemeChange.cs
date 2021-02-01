@@ -2,22 +2,30 @@
 using System.Linq;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class ThemeChange : MonoBehaviour
 {
 	public Mode mode;
 
 	[SerializeField] private SpriteRenderer background = null;
 	[SerializeField] private List<Sprite> backgroundSprites = null;
+	[SerializeField] private List<AudioClip> audioClips = null;
 
 	public bool Blocked { get; set; }
 
 	private GameObject[] Black { get; set; }
 	private GameObject[] White { get; set; }
+	private AudioSource Audio { get; set; }
 
 	public enum Mode
 	{
 		Dark,
 		Light
+	}
+
+	private void Awake()
+	{
+		Audio = GetComponent<AudioSource>();
 	}
 
 	private void Start()
@@ -43,6 +51,8 @@ public class ThemeChange : MonoBehaviour
 	private void ChangeTheme(Mode mode)
 	{
 		this.mode = mode;
+		Audio.clip = audioClips[(int)mode];
+		Audio.Play();
 		background.sprite = backgroundSprites[(int)mode];
 		foreach (GameObject gameObject in mode == Mode.Dark ? Black : White)
 		{
