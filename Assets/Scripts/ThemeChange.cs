@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class ThemeChange : MonoBehaviour
@@ -53,21 +54,7 @@ public class ThemeChange : MonoBehaviour
 		}
 	}
 
-	private GameObject[] FindGameObjectsInLayer(int layer)
-	{
-		GameObject[] objects = (GameObject[])FindObjectsOfType(typeof(GameObject));
-		List<GameObject> gameObjects = new List<GameObject>();
-		foreach (GameObject gameObject in objects)
-		{
-			if (gameObject.layer == layer)
-			{
-				gameObjects.Add(gameObject);
-			}
-		}
-		if (gameObjects.Count == 0)
-		{
-			return null;
-		}
-		return gameObjects.ToArray();
-	}
+	private GameObject[] FindGameObjectsInLayer(int layer) =>
+		FindObjectsOfType<GameObject>().ToList().
+		Where(gameObject => gameObject.layer == layer).ToArray();
 }
