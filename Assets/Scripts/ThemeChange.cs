@@ -3,9 +3,10 @@ using UnityEngine;
 
 public class ThemeChange : MonoBehaviour
 {
+	public Mode mode;
+
 	[SerializeField] private SpriteRenderer background = null;
 	[SerializeField] private List<Sprite> backgroundSprites = null;
-	[SerializeField] private Mode mode;
 
 	public bool Blocked { get; set; }
 

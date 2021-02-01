@@ -5,7 +5,7 @@ public class Block : MonoBehaviour
 {
 	private SpriteRenderer SpriteRenderer { get; set; }
 
-	private void Start()
+	private void Awake()
 	{
 		SpriteRenderer = GetComponent<SpriteRenderer>();
 	}
