@@ -446,6 +446,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4500493250373034632, guid: fc0ae9a70f2c1cb4a94c5802c6a1d06a,
+        type: 3}
+      propertyPath: mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4500493250373034635, guid: fc0ae9a70f2c1cb4a94c5802c6a1d06a,
+        type: 3}
+      propertyPath: groundCheckRadius
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 4500493250373034638, guid: fc0ae9a70f2c1cb4a94c5802c6a1d06a,
         type: 3}
       propertyPath: m_Name

@@ -416,7 +416,7 @@ MonoBehaviour:
   maxJumpTime: 1
   jumpSpeed: 15
   gravityScale: 5
-  groundCheckRadius: 1
+  groundCheckRadius: 0.1
   groundCheck: {fileID: 4500493250838350675}
 --- !u!114 &4500493250373034632
 MonoBehaviour:
