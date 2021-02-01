@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(ThemeChange))]
+[RequireComponent(typeof(SpriteRenderer))]
 public class PlayerController : MonoBehaviour
 {
 	[SerializeField] private float maxSpeed = 0;
@@ -18,10 +20,14 @@ public class PlayerController : MonoBehaviour
 	private float CurrentJumpTime { get; set; }
 	private bool Jump { get; set; }
 	private bool IsGrounded { get; set; }
+	private ThemeChange ThemeController { get; set; }
+	private SpriteRenderer SpriteRenderer { get; set; }
 
-	private void Start()
+	private void Awake()
 	{
 		Rb = GetComponent<Rigidbody2D>();
+		ThemeController = GetComponent<ThemeChange>();
+		SpriteRenderer = GetComponent<SpriteRenderer>();
 	}
 
 	private void Update()
@@ -31,11 +37,12 @@ public class PlayerController : MonoBehaviour
 		{
 			Jump = Input.GetButton("Jump");
 		}
+		SpriteRenderer.flipX = Rb.velocity.x == 0 ? SpriteRenderer.flipX : Rb.velocity.x < 0;
 	}
 
 	private void FixedUpdate()
 	{
-		IsGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, LayerMask.GetMask("Black", "White", "Neutral"));
+		IsGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, LayerMask.GetMask(ThemeController.mode == ThemeChange.Mode.Dark ? "Black" : "White", "Neutral"));
 
 		if (IsGrounded)
 		{
