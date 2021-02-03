@@ -1,23 +1,19 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CheckPoint : MonoBehaviour
 {
-    private GameMaster gm;
+	private GameMaster gm;
 
+	private void Start()
+	{
+		gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameMaster>();
+	}
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameMaster>();
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            gm.lastCheckPointPos = transform.position;
-        }
-    }
+	private void OnTriggerEnter2D(Collider2D other)
+	{
+		if (other.CompareTag("Player"))
+		{
+			gm.lastCheckPointPos = transform.position;
+		}
+	}
 }
