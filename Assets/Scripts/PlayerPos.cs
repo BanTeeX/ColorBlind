@@ -15,7 +15,6 @@ public class PlayerPos : MonoBehaviour
 		if (collision.CompareTag("Platform"))
 		{
 			transform.parent = collision.transform;
-			Debug.Log("We are on a moving platform");
 		}
 	}
 
@@ -24,7 +23,6 @@ public class PlayerPos : MonoBehaviour
 		if (collision.CompareTag("Platform"))
 		{
 			transform.parent = null;
-			Debug.Log("We are not on a moving platform");
 		}
 	}
 }

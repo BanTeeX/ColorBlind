@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4500493249696518249}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 3.2, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4500493250373034679}
@@ -59,7 +59,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 12
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -108,8 +108,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4500493249853698416}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.5, y: 2.5, z: 1}
+  m_LocalPosition: {x: 0, y: 3.2, z: 0.01}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 4500493250373034679}
   m_RootOrder: 2
@@ -180,6 +180,7 @@ GameObject:
   - component: {fileID: 4500493250373034635}
   - component: {fileID: 4500493250373034632}
   - component: {fileID: 4500493250373034633}
+  - component: {fileID: 1685383751}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -242,7 +243,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 680c4f7ff16bacf43ac8b2629372dd1b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -313,7 +314,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -418,6 +419,7 @@ MonoBehaviour:
   gravityScale: 5
   groundCheckRadius: 0.1
   groundCheck: {fileID: 4500493250838350675}
+  master: {fileID: 0}
 --- !u!114 &4500493250373034632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -436,8 +438,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 3cd5bbe1467cfcc408206e5815fcc412, type: 3}
   - {fileID: 21300000, guid: 1e0b65606643e484bb925f38e5358ed8, type: 3}
   audioClips:
-  - {fileID: 8300000, guid: beda55dbbd347c64faaea67246d18fea, type: 3}
   - {fileID: 8300000, guid: 1a4624bb987f4374996508b83f145624, type: 3}
+  - {fileID: 8300000, guid: beda55dbbd347c64faaea67246d18fea, type: 3}
 --- !u!114 &4500493250373034633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -450,8 +452,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19b73b7e79b9ace4fbd71f79bebb98e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 4500493250373034638}
-  master: {fileID: 0}
+--- !u!95 &1685383751
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4500493250373034638}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5e5a09a99ae958e46bf575821e390ba2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4500493250838350672
 GameObject:
   m_ObjectHideFlags: 0
