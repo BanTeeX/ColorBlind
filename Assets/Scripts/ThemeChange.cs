@@ -16,6 +16,7 @@ public class ThemeChange : MonoBehaviour
 	private GameObject[] Black { get; set; }
 	private GameObject[] White { get; set; }
 	private AudioSource Audio { get; set; }
+	private bool FirstCall { get; set; } = true;
 
 	public enum Mode
 	{
@@ -51,8 +52,15 @@ public class ThemeChange : MonoBehaviour
 	private void ChangeTheme(Mode mode)
 	{
 		this.mode = mode;
-		Audio.clip = audioClips[(int)mode];
-		Audio.Play();
+		if (!FirstCall)
+		{
+			Audio.clip = audioClips[(int)mode];
+			Audio.Play();
+		}
+		else
+		{
+			FirstCall = false;
+		}
 		background.sprite = backgroundSprites[(int)mode];
 		foreach (GameObject gameObject in mode == Mode.Dark ? Black : White)
 		{

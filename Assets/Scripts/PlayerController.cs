@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] private float gravityScale = 0;
 	[SerializeField] private float groundCheckRadius = 0;
 	[SerializeField] private Transform groundCheck = null;
+	[SerializeField] private GameObject master = null;
 
 	private Rigidbody2D Rb { get; set; }
 	private float Direction { get; set; }
@@ -73,5 +74,11 @@ public class PlayerController : MonoBehaviour
 		{
 			Rb.gravityScale = gravityScale;
 		}
+	}
+
+	public void Die()
+	{
+		Instantiate(gameObject, new Vector2(master.transform.position.x, master.transform.position.y), Quaternion.identity);
+		Destroy(gameObject);
 	}
 }

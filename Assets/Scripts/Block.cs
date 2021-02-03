@@ -3,16 +3,24 @@
 [RequireComponent(typeof(SpriteRenderer))]
 public class Block : MonoBehaviour
 {
+	public bool IsActivated { get; private set; }
+
 	private SpriteRenderer SpriteRenderer { get; set; }
+	private Collider2D Collider2D { get; set; }
 
 	private void Awake()
 	{
 		SpriteRenderer = GetComponent<SpriteRenderer>();
+		Collider2D = GetComponent<Collider2D>();
 	}
 
 	public void ChangeActive(bool activated)
 	{
-		GetComponent<Collider2D>().isTrigger = !activated;
+		IsActivated = activated;
+		if (Collider2D != null)
+		{
+			Collider2D.isTrigger = !activated;
+		}
 		SpriteRenderer.enabled = activated;
 	}
 

@@ -430,14 +430,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f205d70a93bedc046929cd3e1b954f95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mode: 0
+  mode: 1
   background: {fileID: 4500493249853698419}
   backgroundSprites:
   - {fileID: 21300000, guid: 3cd5bbe1467cfcc408206e5815fcc412, type: 3}
   - {fileID: 21300000, guid: 1e0b65606643e484bb925f38e5358ed8, type: 3}
   audioClips:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: beda55dbbd347c64faaea67246d18fea, type: 3}
+  - {fileID: 8300000, guid: 1a4624bb987f4374996508b83f145624, type: 3}
 --- !u!114 &4500493250373034633
 MonoBehaviour:
   m_ObjectHideFlags: 0
