@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class Collectible : MonoBehaviour
 {
-
 	[SerializeField] private List<GameObject> Objects = new List<GameObject>();
 
 	private void Start()
@@ -18,7 +17,6 @@ public class Collectible : MonoBehaviour
 	{
 		if (collision.CompareTag("Player"))
 		{
-			Debug.Log("Dupa");
 			foreach (GameObject point in Objects)
 			{
 				point.SetActive(true);
