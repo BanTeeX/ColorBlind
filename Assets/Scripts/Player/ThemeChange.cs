@@ -3,6 +3,7 @@ using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
+[RequireComponent(typeof(Animator))]
 public class ThemeChange : MonoBehaviour
 {
 	public Mode mode;
@@ -17,6 +18,7 @@ public class ThemeChange : MonoBehaviour
 	private GameObject[] White { get; set; }
 	private AudioSource Audio { get; set; }
 	private bool FirstCall { get; set; } = true;
+	private Animator Animator { get; set; }
 
 	public enum Mode
 	{
@@ -27,6 +29,7 @@ public class ThemeChange : MonoBehaviour
 	private void Awake()
 	{
 		Audio = GetComponent<AudioSource>();
+		Animator = GetComponent<Animator>();
 	}
 
 	private void Start()
@@ -42,6 +45,7 @@ public class ThemeChange : MonoBehaviour
 		{
 			ChangeTheme(mode == Mode.Dark ? Mode.Light : Mode.Dark);
 		}
+		Animator.SetInteger("Mode", (int)mode);
 	}
 
 	private void FixedUpdate()
