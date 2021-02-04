@@ -3,7 +3,7 @@
 [RequireComponent(typeof(SpriteRenderer))]
 public class Block : MonoBehaviour
 {
-	public bool IsActivated { get; private set; }
+	public bool IsActivated { get; private set; } = true;
 
 	private SpriteRenderer SpriteRenderer { get; set; }
 	private Collider2D Collider2D { get; set; }
