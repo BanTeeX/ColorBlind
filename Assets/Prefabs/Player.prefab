@@ -174,13 +174,13 @@ GameObject:
   m_Component:
   - component: {fileID: 4500493250373034679}
   - component: {fileID: 4500493250373034676}
-  - component: {fileID: 4500493250373034677}
   - component: {fileID: 4500493250373034634}
   - component: {fileID: 6403144767573385326}
   - component: {fileID: 4500493250373034635}
   - component: {fileID: 4500493250373034632}
   - component: {fileID: 4500493250373034633}
   - component: {fileID: 1685383751}
+  - component: {fileID: 870305345}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -255,32 +255,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &4500493250373034677
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4500493250373034638}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: 927238e898e87d34da4627aaaf740a58, type: 2}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.3319788, y: -0.099428415}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 10, y: 10}
-    newSize: {x: 2.56, y: 2.56}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 4.420763, y: 9.138369}
-  m_EdgeRadius: 0
 --- !u!50 &4500493250373034634
 Rigidbody2D:
   serializedVersion: 4
@@ -314,7 +288,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.25
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -415,9 +389,9 @@ MonoBehaviour:
   accelerationTime: 0.05
   slowingTime: 0.1
   maxJumpTime: 1
-  jumpSpeed: 15
+  jumpSpeed: 17
   gravityScale: 5
-  groundCheckRadius: 0.1
+  groundCheckRadius: 0.2
   groundCheck: {fileID: 4500493250838350675}
   master: {fileID: 0}
 --- !u!114 &4500493250373034632
@@ -471,6 +445,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!70 &870305345
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4500493250373034638}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.3528644, y: -0.245471}
+  m_Size: {x: 4.8144183, y: 9.509057}
+  m_Direction: 0
 --- !u!1 &4500493250838350672
 GameObject:
   m_ObjectHideFlags: 0
